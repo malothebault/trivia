@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Template
 GenericName=Template
-Comment=An app template for elemenary os
+Comment=An app trivia for elemenary os
 Categories=Accessories;
-Exec=com.github.malothebault.template
-Icon=com.github.malothebault.template
+Exec=com.github.malothebault.trivia
+Icon=com.github.malothebault.trivia
 Terminal=false
 Type=Application
-X-GNOME-Gettext-Domain=com.github.malothebault.template
+X-GNOME-Gettext-Domain=com.github.malothebault.trivia
 Keywords=Python;

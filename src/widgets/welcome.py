@@ -24,6 +24,8 @@ import os
 import locale
 import gettext
 import webbrowser
+import requests
+import json
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
@@ -112,6 +114,11 @@ class Welcome(Gtk.Box):
                 self.parent.stack.set_visible_child_name("page_one")
             dialog.destroy() 
         else:
+            base_url = "https://opentdb.com"
+            facts = "/api.php?amount=10&type=multiple"
+            first_response = requests.get(base_url+facts)
+            response_list=first_response.json()
+            print(response_list)
             # Open Recent
             self.parent.stack.set_visible_child_name("page_two")
-         
+        

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-	<schema path="/com/github/malothebault/template/" id="com.github.malothebault.template" gettext-domain="template">
+	<schema path="/com/github/malothebault/trivia/" id="com.github.malothebault.trivia" gettext-domain="trivia">
 		<key name="pos-x" type="i">
 			<default>360</default>
 			<summary>Horizontal position</summary>
