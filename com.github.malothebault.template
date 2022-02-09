@@ -2,14 +2,14 @@
 '''
    Copyright 2022 <malothebaut@lilo.org>
 
-   This file is part of Template.
+   This file is part of Trivia.
 
-    Template is free software: you can redistribute it and/or modify
+    Trivia is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    Template is distributed in the hope that it will be useful,
+    Trivia is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -25,11 +25,11 @@ launch_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 
 # Update sys.path to include modules
 if launch_dir == "/usr/bin":
-    modules_path = "/usr/share/com.github.malothebault.template/template"
+    modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
 else:
-    modules_path = launch_dir + "/template"
+    modules_path = launch_dir + "/trivia"
 
-# modules_path = "/usr/share/com.github.malothebault.template/template"
+# modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
 
 sys.path.insert(0, modules_path)
 
