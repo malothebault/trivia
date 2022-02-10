@@ -6,6 +6,7 @@ import os
 import locale
 import gettext
 from random import shuffle
+from html import unescape
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
@@ -47,12 +48,13 @@ class Question(Gtk.Box):
         self.set_border_width(80)
         
         self.id = _id
-        self.category = content.get('category')
+        self.category = unescape(content.get('category'))
         self.type = content.get('type')
         self.difficulty = content.get('difficulty')
-        self.question = content.get('question')
-        self.correct_answer = content.get('correct_answer')
+        self.question = unescape(content.get('question'))
+        self.correct_answer = unescape(content.get('correct_answer'))
         self.incorrect_answers = content.get('incorrect_answers')
+        unescape(s for s in self.incorrect_answers)
         self.possible_answers = self.incorrect_answers
         self.possible_answers.append(self.correct_answer)
         shuffle(self.possible_answers)
@@ -63,14 +65,18 @@ class Question(Gtk.Box):
         grid.set_row_spacing(35)
         grid.set_column_spacing(35)
         
+        label = Gtk.Label(label = self.question)
+        label.set_padding(6, 6)
+        grid.attach(label, 0, 0, 2, 1)
+        
         button_dict = {}
         for index, answer in enumerate(self.possible_answers):
-            button_dict[f"answer_{index}"] = Gtk.Button.new_with_label(_(answer))
+            button_dict[f"answer_{index}"] = Gtk.Button.new_with_label(answer)
             button_dict.get(f"answer_{index}").get_style_context().add_class('suggested-action')
             button_dict.get(f"answer_{index}").connect("clicked", self.on_validate_clicked, self.id)
             grid.attach(button_dict.get(f"answer_{index}"),
-                        index % 2,
-                        index // 2,
+                        1 + index % 2,
+                        1 + index // 2,
                         1,
                         1)
         

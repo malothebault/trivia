@@ -41,14 +41,30 @@ class Stack(Gtk.Box):
 
         self.pack_start(self.stack, True, True, 0)
     
-    def on_start_game(self, amount = 10, category = 9, difficulty = 'easy', _type = 'multiple'):
+    def on_start_game(self, amount = 10, category = 0, difficulty = '', _type = ''):
         self.amount_of_questions = amount
         base_url = "https://opentdb.com"
         api = f"/api.php?amount={amount}"
-        # https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
+        if category:
+            api += f"&category={category}"
+        if difficulty:
+            api += f"&difficulty={difficulty}"
+        if _type:
+            api += f"&type={_type}"
         try:
-            first_response = requests.get(base_url+api)
-            response_list=first_response.json().get('results')
+            ############# API Query #######################
+            # first_response = requests.get(base_url+api)
+            # response_list=first_response.json().get('results')
+            
+            ############# Writing file ####################
+            # with open('json_data.json', 'w') as outfile:
+            #     json.dump(first_response.json(), outfile)
+            
+            ############# Reading file ####################
+            with open('json_data.json') as json_file:
+                data = json.load(json_file)
+            response_list = data.get('results')
+
         except requests.exceptions.ConnectionError as e:
             print("Check your internet connection")
         for i in range(amount):
