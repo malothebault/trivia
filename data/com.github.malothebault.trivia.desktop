@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Template
-GenericName=Template
+Name=Trivia
+GenericName=Trivia
 Comment=An app trivia for elemenary os
 Categories=Accessories;
 Exec=com.github.malothebault.trivia

@@ -49,14 +49,14 @@ class App:
     use in all our application files'''
     application_shortname = "trivia"
     application_id = "com.github.malothebault.trivia"
-    application_name = "Template"
+    application_name = "Trivia"
     application_description = _('An app trivia for elemenary os')
     application_version ="0.1"
     app_years = "2021"
-    main_url = "https://github.com/malothebault/Template"
-    bug_url = "https://github.com/malothebault/Template/issues/labels/bug"
-    help_url = "https://github.com/malothebault/Template/issues"
-    translate_url = "https://github.com/malothebault/Template/issues/labels/translation"
+    main_url = "https://github.com/malothebault/Trivia"
+    bug_url = "https://github.com/malothebault/Trivia/issues/labels/bug"
+    help_url = "https://github.com/malothebault/Trivia/issues"
+    translate_url = "https://github.com/malothebault/Trivia/issues/labels/translation"
     about_comments = application_description
     about_license_type = Gtk.License.GPL_3_0
 
