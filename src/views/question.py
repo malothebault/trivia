@@ -5,6 +5,7 @@ import subprocess
 import os
 import locale
 import gettext
+from random import shuffle
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
@@ -32,7 +33,7 @@ except FileNotFoundError:
     _ = str
 ###################################### 
 
-class PageTwoClass(Gtk.Box):
+class Question(Gtk.Box):
 
     '''Getting system default settings'''
     settings = Gtk.Settings.get_default()
@@ -51,13 +52,29 @@ class PageTwoClass(Gtk.Box):
         self.difficulty = content.get('difficulty')
         self.question = content.get('question')
         self.correct_answer = content.get('correct_answer')
-        self.incorrecrt_answers = content.get('incorrect_answers')
-        self.possible_answers = self.incorrecrt_answers.append(self.correct_answer)
+        self.incorrect_answers = content.get('incorrect_answers')
+        self.possible_answers = self.incorrect_answers
+        self.possible_answers.append(self.correct_answer)
+        shuffle(self.possible_answers)
         
-        validate_button = Gtk.Button.new_with_label(_(self.correct_answer))
-        validate_button.get_style_context().add_class('suggested-action')
-        validate_button.connect("clicked", self.on_validate_clicked, self.id)
-        self.add(validate_button)
+        grid = Gtk.Grid.new()
+        grid.set_column_homogeneous(True)
+        grid.set_row_homogeneous(True)
+        grid.set_row_spacing(35)
+        grid.set_column_spacing(35)
+        
+        button_dict = {}
+        for index, answer in enumerate(self.possible_answers):
+            button_dict[f"answer_{index}"] = Gtk.Button.new_with_label(_(answer))
+            button_dict.get(f"answer_{index}").get_style_context().add_class('suggested-action')
+            button_dict.get(f"answer_{index}").connect("clicked", self.on_validate_clicked, self.id)
+            grid.attach(button_dict.get(f"answer_{index}"),
+                        index % 2,
+                        index // 2,
+                        1,
+                        1)
+        
+        self.add(grid)
 
     def on_validate_clicked(self, widget, _id):
-        self.parent.stack.set_visible_child_name(f"question_{_id + 1}")
+        self.parent.next_question(_id)

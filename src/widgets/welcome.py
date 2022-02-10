@@ -72,12 +72,12 @@ class Welcome(Gtk.Box):
 
         '''Let's populate the Welcome menu actions.'''
         welcome.append(
-            "document-open", # the action icon (a valid icon name)
+            "input-gaming", # the action icon (a valid icon name)
             _('Quick game'), # the action name
-            _('Ten random questions on random subject') # the action description
+            _('Ten random questions on random subjects') # the action description
         )
         welcome.append(
-            "document-new",
+            "applications-development",
             _('Customized'),
             _('Choose nuber of questions, category etc.')
         )
