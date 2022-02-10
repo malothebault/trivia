@@ -24,8 +24,6 @@ import os
 import locale
 import gettext
 import webbrowser
-import requests
-import json
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
@@ -75,13 +73,13 @@ class Welcome(Gtk.Box):
         '''Let's populate the Welcome menu actions.'''
         welcome.append(
             "document-open", # the action icon (a valid icon name)
-            _('Open a file'), # the action name
-            _('Open a file using the native file chooser') # the action description
+            _('Quick game'), # the action name
+            _('Ten random questions on random subject') # the action description
         )
         welcome.append(
             "document-new",
-            _('Next view'),
-            _('Go to the next page to begin with the app')
+            _('Customized'),
+            _('Choose nuber of questions, category etc.')
         )
 
         '''Here we are connecting the on_welcome_activated method to the
@@ -100,7 +98,8 @@ class Welcome(Gtk.Box):
         will use this to perform different actions'''
         self.parent.parent.hbar.hbar_save_file.set_sensitive(True)
         if index == 0:
-            # New Tournament
+            self.parent.on_start_game()
+        else:
             dialog = Gtk.FileChooserNative.new(_("Please choose a file"),
                                                self.parent.parent,
                                                Gtk.FileChooserAction.OPEN,
@@ -112,13 +111,4 @@ class Welcome(Gtk.Box):
                 self.parent.main_file["name"] = dialog.get_filename()[::-1].split("/", 1)[0][::-1]
                 self.parent.main_file["path"] = dialog.get_filename()
                 self.parent.stack.set_visible_child_name("page_one")
-            dialog.destroy() 
-        else:
-            base_url = "https://opentdb.com"
-            facts = "/api.php?amount=10&type=multiple"
-            first_response = requests.get(base_url+facts)
-            response_list=first_response.json()
-            print(response_list)
-            # Open Recent
-            self.parent.stack.set_visible_child_name("page_two")
-        
+            dialog.destroy()
