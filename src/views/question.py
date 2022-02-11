@@ -78,6 +78,7 @@ class Question(Gtk.Box):
         
         label = Gtk.Label(label = self.question)
         label.set_line_wrap(True)
+        label.set_justify(Gtk.Justification.CENTER)
         label.set_name("question_label")
         grid.attach(label, 0, 0, 2, 1)
         
@@ -87,6 +88,7 @@ class Question(Gtk.Box):
             answer_label = Gtk.Label(label = answer)
             answer_label.set_padding(10, 10)
             answer_label.set_line_wrap(True)
+            answer_label.set_justify(Gtk.Justification.CENTER)
             answer_label.set_name("answer_label")
             button_dict.get(f"answer_{index}").add(answer_label)
             button_dict.get(f"answer_{index}").set_name(f"button{index}")

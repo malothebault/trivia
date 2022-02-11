@@ -3,8 +3,9 @@
     font-size: 22px;
 }
 
-#answer_lable {
-    font-weight: bold;
+#answer_label {
+    font-weight: 400;
+    font-size: 16px;
 }
 
 #button0 {
