@@ -24,7 +24,6 @@ class Stack(Gtk.Box):
     def __init__(self, parent):
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.parent = parent
-        
         self.amount_of_questions = 0
 
         self.stack = Gtk.Stack()
@@ -33,6 +32,7 @@ class Stack(Gtk.Box):
         
         self.welcome = wl.Welcome(self)
         self.page_one = page_one.PageOneClass(self)
+        self.question_views = {}
         self.end_game = end_game.EndGame(self)
 
         self.stack.add_titled(self.welcome, "welcome", "Welcome")
@@ -67,10 +67,11 @@ class Stack(Gtk.Box):
 
         except requests.exceptions.ConnectionError as e:
             print("Check your internet connection")
+        
         for i in range(amount):
-            self.i = question.Question(self, i, response_list[i])
-            self.stack.add_titled(self.i, f"question_{i}", f"question_{i}")
-            self.i.show_all()
+            self.question_views[f"question_{i}"] = question.Question(self, i, response_list[i])
+            self.stack.add_titled(self.question_views.get(f"question_{i}"), f"question_{i}", f"question_{i}")
+            self.question_views.get(f"question_{i}").show_all()
         self.stack.set_visible_child_name("question_0")
         return True
     
@@ -79,3 +80,13 @@ class Stack(Gtk.Box):
             self.stack.set_visible_child_name(f"question_{current_id + 1}")
         else:
             self.stack.set_visible_child_name("end_game")
+    
+    def play_again(self):
+        self.parent.hbar.back_button.set_sensitive(False)
+        for i in range(self.amount_of_questions):
+            try:
+                self.stack.remove(self.question_views.get(f"question_{i}"))
+                del self.question_views[f"question_{i}"]
+            except TypeError:
+                break
+        self.stack.set_visible_child_name("welcome")

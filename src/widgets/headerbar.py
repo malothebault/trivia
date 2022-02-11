@@ -51,7 +51,6 @@ except FileNotFoundError:
 
 class Headerbar(Gtk.HeaderBar):
 
-    '''Getting system default settings'''
     settings = Gtk.Settings.get_default()
 
     def __init__(self, parent):
@@ -60,112 +59,42 @@ class Headerbar(Gtk.HeaderBar):
         self.parent = parent
         self._ = _
 
-        '''Here we are setting some parameters for the HeaderBar
-        <https://developer.gnome.org/gtk3/stable/GtkHeaderBar.html>'''
         self.set_show_close_button(True)
         self.props.title = cn.App.application_name
 
         '''NEW DOCUMENT BUTTON'''
-        self.hbar_new_file = Gtk.ToolButton() # a new instance
-        self.hbar_new_file.set_icon_name( # setting the button icon name
-            "document-new" 
-        ) 
-        self.hbar_new_file.connect( # connecting our method to the clicked signal
+        self.back_button = Gtk.Button.new_with_label(_("Menu"))
+        self.back_button.get_style_context().add_class('back-button')
+        self.back_button.connect(
             "clicked", 
-            self.on_hbar_new_file_clicked
+            self.on_back_button_clicked
         )
-        self.pack_start( # packing the button to the start of the HeaderBar
-            self.hbar_new_file
-        )
+        self.pack_start(self.back_button)
         
-        '''OPEN DOCUMENT BUTTON'''
-        self.hbar_open_file = Gtk.ToolButton() # a new instance
-        self.hbar_open_file.set_icon_name( # setting the button icon name
-            "document-open" 
-        ) 
-        self.hbar_open_file.connect( # connecting our method to the clicked signal
-            "clicked", 
-            self.on_hbar_open_file_clicked
-        )
-        self.pack_start( # packing the button to the start of the HeaderBar
-            self.hbar_open_file
-        )
-        
-        '''SAVE DOCUMENT BUTTON'''
-        self.hbar_save_file = Gtk.ToolButton() # a new instance
-        self.hbar_save_file.set_icon_name( # setting the button icon name
-            "document-save" 
-        ) 
-        self.hbar_save_file.connect( # connecting our method to the clicked signal
-            "clicked", 
-            self.on_hbar_save_file_clicked
-        )
-        self.pack_start( # packing the button to the start of the HeaderBar
-            self.hbar_save_file
-        )
-        
-        '''COLOR BUTTON'''
-        self.hbar_color = Gtk.ColorButton.new_with_rgba(
-            Gdk.RGBA(222, 222, 222, 255)
-        )
-        self.hbar_color.connect(
-            "color_set", 
-            self.on_hbar_color_color_set
-        )
-        self.pack_end(self.hbar_color)
-        
-        '''THEME BUTTON'''
-        self.hbar_theme = Gtk.ToolButton()
-        self.hbar_theme.set_icon_name("weather-clear-night") 
-        self.hbar_theme.connect(
+        '''INFORMATION BUTTON'''
+        self.information = Gtk.ToolButton()
+        self.information.set_icon_name("dialog-information") 
+        self.information.connect(
             "clicked",
-            self.on_hbar_theme_switcher
+            self.on_information
         )
-        self.pack_end(self.hbar_theme)
+        self.pack_end(self.information)
+        
+        '''BEST SCORE BUTTON'''
+        self.best_score = Gtk.ToolButton()
+        self.best_score.set_icon_name("starred") 
+        self.best_score.connect(
+            "clicked",
+            self.on_best_score
+        )
+        self.pack_end(self.best_score)
 
     '''ACTIONS'''
-    def on_hbar_new_file_clicked(self, widget):
-        self.parent.stack.stack.set_visible_child_name("page_one")
-        
-    def on_hbar_open_file_clicked(self, widget):
-        dialog = Gtk.FileChooserNative.new("Please choose a file",
-                                            self.parent,
-                                            Gtk.FileChooserAction.OPEN,
-                                            "Open",
-                                            "Cancel")
-        response = dialog.run()
-        if response == Gtk.ResponseType.ACCEPT:
-            print("File selected: " + dialog.get_filename())
-            self.parent.main_file["name"] = dialog.get_filename()[::-1].split("/", 1)[0][::-1]
-            self.parent.main_file["path"] = dialog.get_filename()
-            self.parent.stack.stack.set_visible_child_name("page_two")
-        dialog.destroy() 
+    def on_back_button_clicked(self, widget):
+        self.parent.stack.play_again()
     
-    def on_hbar_save_file_clicked(self, widget):
-        None
-
-    def on_hbar_color_color_set(self, widget):
-        cn.Colors.primary_color = widget.get_rgba().to_string()
-
-        stylesheet = f"""
-            @define-color colorPrimary {cn.Colors.primary_color};
-            @define-color textColorPrimary {cn.Colors.primary_text_color};
-            @define-color textColorPrimaryShadow {cn.Colors.primary_text_shadow_color};
-        """
-
-        style_provider = Gtk.CssProvider()
-        style_provider.load_from_data(bytes(stylesheet.encode()))
-        Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(), 
-            style_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-        )
+    def on_best_score(self, widget):
+        print("best score")
     
-    def on_hbar_theme_switcher(self, widget):
-        theme = self.settings.get_property(
-            "gtk-application-prefer-dark-theme"
-        )
-        self.settings.set_property(
-            "gtk-application-prefer-dark-theme", 
-            not theme # theme is a bool, we are reversing it
-        )
+    def on_information(self, widget):
+        print("information")

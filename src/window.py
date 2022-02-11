@@ -20,13 +20,11 @@
 import gi
 
 gi.require_version('Gtk', '3.0')
-# gi.require_version('Granite', '1.0')
 
 from gi.repository import Gtk
 
 import constants as cn
 import headerbar as hb
-# import welcome as wl
 import stack as sk
 
 class Window(Gtk.Window):
@@ -42,16 +40,8 @@ class Window(Gtk.Window):
         context = self.get_style_context()
         context.add_class ("rounded")
 
-        '''Here we are creating a new instance of Headerbar 
-        and setting as the titlebar'''
         self.hbar = hb.Headerbar(self)
         self.set_titlebar(self.hbar)
 
-        '''This is a new instance of Welcome, we are 
-        simply adding it to the window
-        Note: Not all applications need a Welcome Page, make 
-        your choice well.'''
-        # self.welcome = wl.Welcome()
-        # self.add(self.welcome)
         self.stack = sk.Stack(self)
         self.add(self.stack)

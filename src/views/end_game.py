@@ -10,7 +10,7 @@ import webbrowser
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
 
-from gi.repository import Gtk, Granite, Gdk
+from gi.repository import Gtk, Granite, Gdk, GdkPixbuf
 
 import constants as cn
 
@@ -46,3 +46,20 @@ class EndGame(Gtk.Box):
         self.parent = parent
         self.set_border_width(60)
         self.set_orientation(Gtk.Orientation.VERTICAL)
+        
+        width = 64
+        height = 64
+        
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file('data/party-popper.svg')
+        pixbuf = pixbuf.scale_simple(width, height, GdkPixbuf.InterpType.BILINEAR)
+        icon = Gtk.Image.new_from_pixbuf(pixbuf)
+        
+        validate_button = Gtk.Button.new_with_label(_("Play Again!"))
+        validate_button.get_style_context().add_class('suggested-action')
+        validate_button.connect("clicked", self.on_play_again)
+        
+        self.pack_start(icon, False, False, 0)
+        self.pack_end(validate_button, False, False, 0)
+        
+    def on_play_again(self, widget):
+        self.parent.play_again()

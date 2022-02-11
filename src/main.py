@@ -33,11 +33,6 @@ class Application(Gtk.Application):
             modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
         else:
             modules_path = "/app/bin/trivia"
-
-        # screen = Gdk.Screen.get_default()
-        # provider = Gtk.CssProvider()
-        # provider.load_from_path(modules_path + "/style.css")
-        # Gtk.StyleContext.add_provider_for_screen(screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
                 
         self.settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
         self.win.move(self.settings.get_int("pos-x"), self.settings.get_int("pos-y"))

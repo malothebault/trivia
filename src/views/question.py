@@ -45,7 +45,7 @@ class Question(Gtk.Box):
         Gtk.Box.__init__(self, False, 0)
         self.parent = parent
         self._ = _
-        self.set_border_width(80)
+        self.set_border_width(30)
         
         self.id = _id
         self.category = unescape(content.get('category'))
@@ -59,28 +59,47 @@ class Question(Gtk.Box):
         self.possible_answers.append(self.correct_answer)
         shuffle(self.possible_answers)
         
+        screen = Gdk.Screen.get_default()
+        provider = Gtk.CssProvider()
+        provider.load_from_path('src/ui/style.css')
+        Gtk.StyleContext.add_provider_for_screen(screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+        
+        vbox = Gtk.Box(orientation = Gtk.Orientation.VERTICAL,
+                       spacing = 20,
+                       homogeneous = False,
+                       halign = Gtk.Align.CENTER,
+                       valign = Gtk.Align.CENTER)
+
         grid = Gtk.Grid.new()
         grid.set_column_homogeneous(True)
-        grid.set_row_homogeneous(True)
+        grid.set_row_homogeneous(False)
         grid.set_row_spacing(35)
         grid.set_column_spacing(35)
         
         label = Gtk.Label(label = self.question)
-        label.set_padding(6, 6)
+        label.set_line_wrap(True)
+        label.set_name("question_label")
         grid.attach(label, 0, 0, 2, 1)
         
         button_dict = {}
         for index, answer in enumerate(self.possible_answers):
-            button_dict[f"answer_{index}"] = Gtk.Button.new_with_label(answer)
-            button_dict.get(f"answer_{index}").get_style_context().add_class('suggested-action')
-            button_dict.get(f"answer_{index}").connect("clicked", self.on_validate_clicked, self.id)
+            button_dict[f"answer_{index}"] = Gtk.Button()
+            answer_label = Gtk.Label(label = answer)
+            answer_label.set_padding(10, 10)
+            answer_label.set_line_wrap(True)
+            answer_label.set_name("answer_label")
+            button_dict.get(f"answer_{index}").add(answer_label)
+            button_dict.get(f"answer_{index}").set_name(f"button{index}")
+            button_dict.get(f"answer_{index}").connect("clicked", self.next_question, self.id)
+            button_dict.get(f"answer_{index}").set_can_focus(False)
             grid.attach(button_dict.get(f"answer_{index}"),
-                        1 + index % 2,
+                        index % 2,
                         1 + index // 2,
                         1,
                         1)
         
-        self.add(grid)
+        vbox.pack_start(grid, False, False, 0)
+        self.set_center_widget(vbox)
 
-    def on_validate_clicked(self, widget, _id):
+    def next_question(self, widget, _id):
         self.parent.next_question(_id)

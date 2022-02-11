@@ -53,24 +53,18 @@ except FileNotFoundError:
 
 class Welcome(Gtk.Box):
 
-    '''Getting system default settings'''
     settings = Gtk.Settings.get_default()
 
     def __init__(self, parent):
-        '''Our class will be a Gtk.Box and will contain our
-        new Welcome Widget.'''
         Gtk.Box.__init__(self, False, 0)
         self.parent = parent
         self._ = _
 
-        '''Here we are creating a new Welcome Widget from the Granite library'''
         welcome = Granite.WidgetsWelcome()
         welcome = welcome.new(
             _("Welcome on Template"),
             cn.App.application_description
         )
-
-        '''Let's populate the Welcome menu actions.'''
         welcome.append(
             "input-gaming", # the action icon (a valid icon name)
             _('Quick game'), # the action name
@@ -82,33 +76,13 @@ class Welcome(Gtk.Box):
             _('Choose nuber of questions, category etc.')
         )
 
-        '''Here we are connecting the on_welcome_activated method to the
-        activated signal of the Welcome Widget, so this will be triggered
-        when an action is activated'''
         welcome.connect("activated", self.on_welcome_activated)
-
-        self.parent.parent.hbar.hbar_save_file.set_sensitive(False)
-
-        '''Do you remember the Box we were talking about at the beginning?
-        Here, we add the Welcome Widget to this.'''
+        self.parent.parent.hbar.back_button.set_sensitive(False)
         self.add(welcome)
 
     def on_welcome_activated(self, widget, index):
-        '''The activated signal return an index with the activated item, we
-        will use this to perform different actions'''
-        self.parent.parent.hbar.hbar_save_file.set_sensitive(True)
+        self.parent.parent.hbar.back_button.set_sensitive(True)
         if index == 0:
             self.parent.on_start_game()
         else:
-            dialog = Gtk.FileChooserNative.new(_("Please choose a file"),
-                                               self.parent.parent,
-                                               Gtk.FileChooserAction.OPEN,
-                                               _("Open"),
-                                               _("Cancel"))
-            response = dialog.run()
-            if response == Gtk.ResponseType.ACCEPT:
-                print("File selected: " + dialog.get_filename())
-                self.parent.main_file["name"] = dialog.get_filename()[::-1].split("/", 1)[0][::-1]
-                self.parent.main_file["path"] = dialog.get_filename()
-                self.parent.stack.set_visible_child_name("page_one")
-            dialog.destroy()
+            self.parent.stack.set_visible_child_name("end_game")

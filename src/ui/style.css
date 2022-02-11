@@ -1,0 +1,24 @@
+#question_label { 
+    font-weight: bold;
+    font-size: 22px;
+}
+
+#answer_lable {
+    font-weight: bold;
+}
+
+#button0 {
+    background-color: #ff8c82;
+}
+
+#button1 {
+    background-color: #d1ff82;
+}
+
+#button2 {
+    background-color: #8cd5ff;
+}
+
+#button3 {
+    background-color: #fff394;
+}
