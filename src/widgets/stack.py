@@ -83,10 +83,10 @@ class Stack(Gtk.Box):
     
     def play_again(self):
         self.parent.hbar.back_button.set_sensitive(False)
+        self.stack.set_visible_child_name("welcome")
         for i in range(self.amount_of_questions):
             try:
                 self.stack.remove(self.question_views.get(f"question_{i}"))
                 del self.question_views[f"question_{i}"]
             except TypeError:
                 break
-        self.stack.set_visible_child_name("welcome")

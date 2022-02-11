@@ -62,7 +62,7 @@ class Headerbar(Gtk.HeaderBar):
         self.set_show_close_button(True)
         self.props.title = cn.App.application_name
 
-        '''NEW DOCUMENT BUTTON'''
+        '''BACK BUTTON'''
         self.back_button = Gtk.Button.new_with_label(_("Menu"))
         self.back_button.get_style_context().add_class('back-button')
         self.back_button.connect(

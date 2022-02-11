@@ -62,7 +62,7 @@ class Welcome(Gtk.Box):
 
         welcome = Granite.WidgetsWelcome()
         welcome = welcome.new(
-            _("Welcome on Template"),
+            _(f"Welcome on {cn.App.application_name}"),
             cn.App.application_description
         )
         welcome.append(
