@@ -104,4 +104,6 @@ class Question(Gtk.Box):
         self.set_center_widget(vbox)
 
     def next_question(self, widget, _id):
+        if widget.get_child().get_label() == self.correct_answer:
+            self.parent.score += 1
         self.parent.next_question(_id)

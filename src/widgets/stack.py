@@ -25,6 +25,7 @@ class Stack(Gtk.Box):
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.parent = parent
         self.amount_of_questions = 0
+        self.score = 0
 
         self.stack = Gtk.Stack()
         self.stack.set_transition_type(Gtk.StackTransitionType.SLIDE_LEFT_RIGHT)
@@ -42,6 +43,7 @@ class Stack(Gtk.Box):
         self.pack_start(self.stack, True, True, 0)
     
     def on_start_game(self, amount = 10, category = 0, difficulty = '', _type = ''):
+        self.score = 0
         self.amount_of_questions = amount
         base_url = "https://opentdb.com"
         api = f"/api.php?amount={amount}"
@@ -78,7 +80,9 @@ class Stack(Gtk.Box):
     def next_question(self, current_id):
         if current_id < self.amount_of_questions - 1:
             self.stack.set_visible_child_name(f"question_{current_id + 1}")
+            print(self.score)
         else:
+            self.end_game.label.set_label(f"Your score is: {self.score}")
             self.stack.set_visible_child_name("end_game")
     
     def play_again(self):
