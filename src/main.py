@@ -21,18 +21,18 @@ class Application(Gtk.Application):
         self.granite_settings = Granite.Settings()
         self.gtk_settings = Gtk.Settings.get_default()
 
-        #Since complex signals in Python are quite complicated, Dark Mode is determined at launch time(may change later)
+        #Since complex signals in Python are quite complicated, Dark Mode is determined at launch time
         if self.granite_settings.get_prefers_color_scheme() == Granite.SettingsColorScheme.DARK:
             self.gtk_settings.set_property("gtk-application-prefer-dark-theme", True) 
 
         self.granite_settings.connect("notify::prefers-color-scheme", self.on_color_scheme_changed)
 
-        launch_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+        # launch_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
 
-        if launch_dir == "/usr/bin":
-            modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
-        else:
-            modules_path = "/app/bin/trivia"
+        # if launch_dir == "/usr/bin":
+        #     modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
+        # else:
+        #     modules_path = "/app/bin/trivia"
                 
         self.settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
         self.win.move(self.settings.get_int("pos-x"), self.settings.get_int("pos-y"))

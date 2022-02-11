@@ -50,9 +50,9 @@ class App:
     application_shortname = "trivia"
     application_id = "com.github.malothebault.trivia"
     application_name = "Trivia"
-    application_description = _('An app trivia for elemenary os')
+    application_description = _('A fun quiz game')
     application_version ="0.1"
-    app_years = "2021"
+    app_years = "2022"
     main_url = "https://github.com/malothebault/Trivia"
     bug_url = "https://github.com/malothebault/Trivia/issues/labels/bug"
     help_url = "https://github.com/malothebault/Trivia/issues"

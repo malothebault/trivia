@@ -94,7 +94,7 @@ class Headerbar(Gtk.HeaderBar):
         self.parent.stack.play_again()
     
     def on_best_score(self, widget):
-        print("best score")
+        print("Best score")
     
     def on_information(self, widget):
-        print("information")
+        print("About Trivia")

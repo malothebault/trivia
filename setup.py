@@ -27,11 +27,11 @@ install_data = [
 
 '''Let's go and infuse our application into the system.'''
 setup(
-    name='Template',
+    name='Trivia',
     version='0.1',
     author='Malo Thebault',
-    description='An app trivia for elemenary os',
-    url='https://github.com/malothebault/Template',
+    description='A fun quiz game',
+    url='https://github.com/malothebault/Trivia',
     license='GNU GPL3',
     scripts=['com.github.malothebault.trivia'],
     packages=['src'],

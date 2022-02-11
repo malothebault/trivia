@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Trivia
 GenericName=Trivia
-Comment=An app trivia for elemenary os
+Comment=A fun quiz game
 Categories=Accessories;
 Exec=com.github.malothebault.trivia
 Icon=com.github.malothebault.trivia
