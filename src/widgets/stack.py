@@ -80,9 +80,8 @@ class Stack(Gtk.Box):
     def next_question(self, current_id):
         if current_id < self.amount_of_questions - 1:
             self.stack.set_visible_child_name(f"question_{current_id + 1}")
-            print(self.score)
         else:
-            self.end_game.label.set_label(f"Your score is: {self.score}")
+            self.end_game.label.set_label(f"Your score is: {self.score}/{self.amount_of_questions}")
             self.stack.set_visible_child_name("end_game")
     
     def play_again(self):
