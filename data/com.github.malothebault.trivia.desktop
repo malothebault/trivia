@@ -2,10 +2,10 @@
 Name=Trivia
 GenericName=Trivia
 Comment=A fun quiz game
-Categories=Accessories;
+Categories=Games;
 Exec=com.github.malothebault.trivia
 Icon=com.github.malothebault.trivia
-Terminal=True
+Terminal=False
 Type=Application
 X-GNOME-Gettext-Domain=com.github.malothebault.trivia
 Keywords=Game;Quiz,Trivia
