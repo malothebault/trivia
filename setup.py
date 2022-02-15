@@ -15,6 +15,7 @@ install_data = [
     ('/usr/share/glib-2.0/schemas', ["data/com.github.malothebault.trivia.gschema.xml"]),
     ('bin/trivia', ['src/constants.py']),
     ('bin/trivia', ['src/main.py']),
+    ('bin/trivia', ['src/views/custom_game.py']),
     ('bin/trivia', ['src/views/end_game.py']),
     ('bin/trivia', ['src/views/page_one.py']),
     ('bin/trivia', ['src/views/question.py']),
@@ -35,5 +36,5 @@ setup(
     license='GNU GPL3',
     scripts=['com.github.malothebault.trivia'],
     packages=['src'],
-    data_files=install_data
+    data_files=install_data,
 )

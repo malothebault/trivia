@@ -35,38 +35,82 @@ except FileNotFoundError:
 
 class EndGame(Gtk.Box):
 
-    '''Getting system default settings'''
     settings = Gtk.Settings.get_default()
 
     def __init__(self, parent):
-        '''Our class will be a Gtk.Box and will contain our 
-        new Welcome Widget.'''
         Gtk.Box.__init__(self, False, 0)
         self._ = _
         self.parent = parent
         self.set_border_width(60)
         self.set_orientation(Gtk.Orientation.VERTICAL)
         
-        width = 64
-        height = 64
+        # width = 64
+        # height = 64
         
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file('data/party-popper.svg')
-        pixbuf = pixbuf.scale_simple(width, height, GdkPixbuf.InterpType.BILINEAR)
-        icon = Gtk.Image.new_from_pixbuf(pixbuf)
+        # pixbuf = GdkPixbuf.Pixbuf.new_from_file('data/party-popper.svg')
+        # pixbuf = pixbuf.scale_simple(width, height, GdkPixbuf.InterpType.BILINEAR)
+        # icon = Gtk.Image.new_from_pixbuf(pixbuf)
         
-        self.label = Gtk.Label(label = _(f"No score"))
+        self.label = Gtk.Label(label = _(f"No score 🙁"))
         self.label.set_line_wrap(True)
         self.label.set_justify(Gtk.Justification.CENTER)
         self.label.get_style_context().add_class(Granite.STYLE_CLASS_H1_LABEL)
-        # self.label.set_name("question_label")
         
-        play_again_button = Gtk.Button.new_with_label(_("Play Again!"))
-        play_again_button.get_style_context().add_class('suggested-action')
-        play_again_button.connect("clicked", self.on_play_again)
+        play_again_button = Gtk.Button(label=_("Play again"),
+                                       image=Gtk.Image(icon_name="input-gaming",
+                                                       icon_size=Gtk.IconSize.BUTTON),
+                                       always_show_image=True,
+                                       can_focus=False)
+        play_again_button.connect(
+            "clicked",
+            self.on_play_again
+        )
         
-        self.pack_start(icon, False, False, 0)
-        self.pack_start(self.label, False, False, 0)
-        self.pack_end(play_again_button, False, False, 0)
+        best_score_button = Gtk.Button(label=_("View statistics"),
+                                       image=Gtk.Image(icon_name="starred",
+                                                       icon_size=Gtk.IconSize.BUTTON),
+                                       always_show_image=True,
+                                       can_focus=False)
+        best_score_button.connect(
+            "clicked",
+            self.on_best_score
+        )
+        
+        share_button = Gtk.Button(label=_("Share"),
+                                  image=Gtk.Image(icon_name="emblem-shared",
+                                                  icon_size=Gtk.IconSize.BUTTON),
+                                  always_show_image=True,
+                                  can_focus=False)
+        share_button.connect(
+            "clicked",
+            self.on_share
+        )      
+        
+        grid = Gtk.Grid.new()
+        grid.set_column_homogeneous(True)
+        grid.set_row_homogeneous(False)
+        grid.set_row_spacing(35)
+        grid.set_column_spacing(35)
+
+        grid.attach(self.label, 0, 0, 3, 1)
+        grid.attach(play_again_button, 0, 1, 1, 1)
+        grid.attach(best_score_button, 1, 1, 1, 1)
+        grid.attach(share_button, 2, 1, 1, 1)
+        
+        vbox = Gtk.Box(orientation = Gtk.Orientation.VERTICAL,
+                       spacing = 20,
+                       homogeneous = False,
+                       halign = Gtk.Align.CENTER,
+                       valign = Gtk.Align.CENTER)
+        
+        vbox.pack_start(grid, False, False, 0)
+        self.set_center_widget(vbox)
         
     def on_play_again(self, widget):
         self.parent.play_again()
+    
+    def on_best_score(self, widget):
+        print("Best score")
+        
+    def on_share(self, widget):
+        print("Share")

@@ -15,6 +15,7 @@ import welcome as wl
 import page_one
 import question
 import end_game
+import custom_game
 
 class Stack(Gtk.Box):
         
@@ -35,10 +36,12 @@ class Stack(Gtk.Box):
         self.page_one = page_one.PageOneClass(self)
         self.question_views = {}
         self.end_game = end_game.EndGame(self)
+        self.custom_game = custom_game.CustomGame(self)
 
         self.stack.add_titled(self.welcome, "welcome", "Welcome")
         self.stack.add_titled(self.page_one, "page_one", "Page One")
         self.stack.add_titled(self.end_game, "end_game", "End Game")
+        self.stack.add_titled(self.custom_game, "custom_game", "Custom Game")
 
         self.pack_start(self.stack, True, True, 0)
     
@@ -55,17 +58,17 @@ class Stack(Gtk.Box):
             api += f"&type={_type}"
         try:
             ############# API Query #######################
-            # first_response = requests.get(base_url+api)
-            # response_list=first_response.json().get('results')
+            first_response = requests.get(base_url+api)
+            response_list=first_response.json().get('results')
             
             ############# Writing file ####################
             # with open('json_data.json', 'w') as outfile:
             #     json.dump(first_response.json(), outfile)
             
             ############# Reading file ####################
-            with open('json_data.json') as json_file:
-                data = json.load(json_file)
-            response_list = data.get('results')
+            # with open('json_data.json') as json_file:
+            #     data = json.load(json_file)
+            # response_list = data.get('results')
 
         except requests.exceptions.ConnectionError as e:
             print("Check your internet connection")
@@ -81,7 +84,8 @@ class Stack(Gtk.Box):
         if current_id < self.amount_of_questions - 1:
             self.stack.set_visible_child_name(f"question_{current_id + 1}")
         else:
-            self.end_game.label.set_label(f"Your score is: {self.score}/{self.amount_of_questions}")
+            score_label = self.compute_score()
+            self.end_game.label.set_label(score_label)
             self.stack.set_visible_child_name("end_game")
     
     def play_again(self):
@@ -93,3 +97,17 @@ class Stack(Gtk.Box):
                 del self.question_views[f"question_{i}"]
             except TypeError:
                 break
+    
+    def compute_score(self):
+        if self.score / self.amount_of_questions == 1:
+            label = '🏆️'
+        elif 0.75 <= self.score / self.amount_of_questions < 1:
+            label = '🎉'
+        elif 0.5 <= self.score / self.amount_of_questions < 0.75:
+            label = '💪'
+        elif 0.25 <= self.score / self.amount_of_questions < 0.5:
+            label = '👍️'
+        else:
+            label = '🤷‍♂️'
+        label += f"\nYour score is: {self.score}/{self.amount_of_questions}"
+        return label

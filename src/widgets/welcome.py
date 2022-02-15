@@ -73,7 +73,7 @@ class Welcome(Gtk.Box):
         welcome.append(
             "applications-development",
             _('Customized'),
-            _('Choose nuber of questions, category etc.')
+            _('Choose number of questions, category etc.')
         )
 
         welcome.connect("activated", self.on_welcome_activated)
@@ -85,4 +85,4 @@ class Welcome(Gtk.Box):
         if index == 0:
             self.parent.on_start_game()
         else:
-            self.parent.stack.set_visible_child_name("end_game")
+            self.parent.stack.set_visible_child_name("custom_game")
