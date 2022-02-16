@@ -27,7 +27,7 @@ import constants as cn
 import about_dialog
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, Granite, GdkPixbuf
 
 
 ########### TRANSLATION ##############
@@ -97,6 +97,6 @@ class Headerbar(Gtk.HeaderBar):
         print("Best score")
     
     def on_information(self, widget):
-        print("About Trivia")
         about = about_dialog.AboutDialog(self.parent)
         about.present()
+        about.destroy()

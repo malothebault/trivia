@@ -1,23 +1,21 @@
 #!/usr/bin/python3
 
+import constants as cn
 from gi.repository import Gtk, GdkPixbuf
 
 class AboutDialog(Gtk.AboutDialog):
-    def __init__(self, parent, **kwargs):
+    def __init__(self, parent):
         Gtk.AboutDialog.__init__(self)
-        # self.props.program_name = 'Trivia'
-        # self.props.version = '0.1'
-        # self.props.website = 'https://github.com/mijorus/smile'
-        # self.props.authors = ['Lorenzo Paderi']
-        # self.props.copyright = '(C) 2022 Lorenzo Paderi'
-        # self.props.logo_icon_name = 'icons/32/com.github.malothebault.trivia.svg'
-        # self.set_transient_for(parent)
-        self.set_program_name("Battery")
-        self.set_version("0.1")
-        self.set_copyright("(c) Jan Bodnar")
-        self.set_comments("Battery is a simple tool for battery checking")
-        self.set_website("http://www.zetcode.com")
-        self.set_logo(GdkPixbuf.Pixbuf.new_from_file('data/icons/32/com.github.malothebault.trivia.svg'))
+        self.set_program_name(cn.App.application_name)
+        self.set_version(cn.App.application_version)
+        self.set_copyright("© 2022 Malo Thebault")
+        self.set_license_type(cn.App.about_license_type)
+        self.set_website(cn.App.main_url)
+        self.set_authors(["Malo Thebault"])
+        self.set_comments(cn.App.about_comments)
+        self.set_translator_credits([''])
+        self.add_credit_section(section_name = "Quiz database",
+                                people = ["Open Trivia DB"])
+        self.set_logo(GdkPixbuf.Pixbuf.new_from_file('data/icons/64/com.github.malothebault.trivia.svg'))
         self.set_transient_for(parent)
         self.run()
-        self.destroy()
