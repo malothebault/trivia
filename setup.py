@@ -1,6 +1,17 @@
 #!/usr/bin/python3
-
+import sys
 from distutils.core import setup
+from distutils.command.install import install as _install
+
+def _post_install(dir):
+    from subprocess import call
+    call([sys.executable, 'build-aux/post_install.py'])
+
+class install(_install):
+    def run(self):
+        _install.run(self)
+        self.execute(_post_install, (self.install_lib,),
+                     msg="- Running post-installation script")
 
 '''Here we are defining where should be placed each file'''
 install_data = [
@@ -12,7 +23,8 @@ install_data = [
     ('share/icons/hicolor/32x32/apps', ['data/icons/32/com.github.malothebault.trivia.svg']),
     ('share/icons/hicolor/24x24/apps', ['data/icons/24/com.github.malothebault.trivia.svg']),
     ('share/icons/hicolor/16x16/apps', ['data/icons/16/com.github.malothebault.trivia.svg']),
-    ('/usr/share/glib-2.0/schemas', ["data/com.github.malothebault.trivia.gschema.xml"]),
+    ('share/glib-2.0/schemas', ["data/com.github.malothebault.trivia.gschema.xml"]),
+    ('bin/trivia', ['src/ui/style.css']),
     ('bin/trivia', ['src/constants.py']),
     ('bin/trivia', ['src/main.py']),
     ('bin/trivia', ['src/views/custom_game.py']),
@@ -37,4 +49,5 @@ setup(
     scripts=['com.github.malothebault.trivia'],
     packages=['src'],
     data_files=install_data,
+    cmdclass={'install': install}
 )

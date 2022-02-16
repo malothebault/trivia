@@ -66,24 +66,24 @@ class EndGame(Gtk.Box):
             self.on_play_again
         )
         
-        best_score_button = Gtk.Button(label=_("View statistics"),
+        statistics_button = Gtk.Button(label=_("View statistics"),
                                        image=Gtk.Image(icon_name="starred",
                                                        icon_size=Gtk.IconSize.BUTTON),
                                        always_show_image=True,
                                        can_focus=False)
-        best_score_button.connect(
+        statistics_button.connect(
             "clicked",
-            self.on_best_score
+            self.on_statistics
         )
         
-        share_button = Gtk.Button(label=_("Share"),
-                                  image=Gtk.Image(icon_name="emblem-shared",
+        view_answers_button = Gtk.Button(label=_("View Answers"),
+                                  image=Gtk.Image(icon_name="emblem-default",
                                                   icon_size=Gtk.IconSize.BUTTON),
                                   always_show_image=True,
                                   can_focus=False)
-        share_button.connect(
+        view_answers_button.connect(
             "clicked",
-            self.on_share
+            self.on_view_answers
         )      
         
         grid = Gtk.Grid.new()
@@ -94,8 +94,8 @@ class EndGame(Gtk.Box):
 
         grid.attach(self.label, 0, 0, 3, 1)
         grid.attach(play_again_button, 0, 1, 1, 1)
-        grid.attach(best_score_button, 1, 1, 1, 1)
-        grid.attach(share_button, 2, 1, 1, 1)
+        grid.attach(statistics_button, 1, 1, 1, 1)
+        grid.attach(view_answers_button, 2, 1, 1, 1)
         
         vbox = Gtk.Box(orientation = Gtk.Orientation.VERTICAL,
                        spacing = 20,
@@ -109,8 +109,9 @@ class EndGame(Gtk.Box):
     def on_play_again(self, widget):
         self.parent.play_again()
     
-    def on_best_score(self, widget):
-        print("Best score")
+    def on_statistics(self, widget):
+        print("Games palyed")
+        print("Average score")
         
-    def on_share(self, widget):
-        print("Share")
+    def on_view_answers(self, widget):
+        print("View Answers")

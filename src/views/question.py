@@ -2,6 +2,7 @@
 
 import gi
 import subprocess
+import sys
 import os
 import locale
 import gettext
@@ -58,11 +59,6 @@ class Question(Gtk.Box):
         self.possible_answers = self.incorrect_answers
         self.possible_answers.append(self.correct_answer)
         shuffle(self.possible_answers)
-        
-        screen = Gdk.Screen.get_default()
-        provider = Gtk.CssProvider()
-        provider.load_from_path('src/ui/style.css')
-        Gtk.StyleContext.add_provider_for_screen(screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
         
         vbox = Gtk.Box(orientation = Gtk.Orientation.VERTICAL,
                        spacing = 20,
