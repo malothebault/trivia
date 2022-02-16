@@ -24,5 +24,11 @@
 			<summary>Window height</summary>
 			<description>The saved height of the main window</description>
 		</key>
+
+		<key name="played_games" type="i">
+			<default>0</default>
+			<summary>Played games</summary>
+			<description>The number of games that has been played</description>
+		</key>
 	</schema>
 </schemalist>

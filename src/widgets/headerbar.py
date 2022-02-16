@@ -18,13 +18,14 @@
     along with ElementaryPython.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
+import statistics
 import gi
 import webbrowser
 import os
 import locale
 import gettext
 import constants as cn
-import about_dialog
+import about_dialog, statistics_dialog
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Granite, GdkPixbuf
@@ -94,9 +95,9 @@ class Headerbar(Gtk.HeaderBar):
         self.parent.stack.play_again()
     
     def on_best_score(self, widget):
-        print("Best score")
+        stats = statistics_dialog.StatisticsDialog(self.parent)
+        stats.destroy()
     
     def on_information(self, widget):
         about = about_dialog.AboutDialog(self.parent)
-        about.present()
         about.destroy()

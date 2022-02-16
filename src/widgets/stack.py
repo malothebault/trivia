@@ -8,7 +8,7 @@ import json
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
-from gi.repository import Gtk, Gdk, Granite
+from gi.repository import Gtk, Gdk, Granite, Gio
 
 import constants as cn
 import welcome as wl
@@ -84,6 +84,7 @@ class Stack(Gtk.Box):
         if current_id < self.amount_of_questions - 1:
             self.stack.set_visible_child_name(f"question_{current_id + 1}")
         else:
+            self.update_statistics()
             score_label = self.compute_score()
             self.end_game.label.set_label(score_label)
             self.stack.set_visible_child_name("end_game")
@@ -111,3 +112,7 @@ class Stack(Gtk.Box):
             label = '🤷‍♂️'
         label += f"\nYour score is: {self.score}/{self.amount_of_questions}"
         return label
+    
+    def update_statistics(self):
+        settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
+        settings.set_int("played_games", settings.get_int("played_games") + 1)

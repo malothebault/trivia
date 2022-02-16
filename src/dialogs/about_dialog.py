@@ -13,7 +13,7 @@ class AboutDialog(Gtk.AboutDialog):
         self.set_website(cn.App.main_url)
         self.set_authors(["Malo Thebault"])
         self.set_comments(cn.App.about_comments)
-        self.set_translator_credits([''])
+        self.set_translator_credits('')
         self.add_credit_section(section_name = "Quiz database",
                                 people = ["Open Trivia DB"])
         self.set_logo(GdkPixbuf.Pixbuf.new_from_file('data/icons/64/com.github.malothebault.trivia.svg'))

@@ -1,21 +1,21 @@
 #!/usr/bin/python3
 '''
-   Copyright 2017 Mirko Brombin <send@mirko.pm>
+   Copyright 2022 Malo Thebault <malothebault@lilo.org>
 
-   This file is part of ElementaryPython.
+   This file is part of Trivia.
 
-    ElementaryPython is free software: you can redistribute it and/or modify
+    Trivia is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    ElementaryPython is distributed in the hope that it will be useful,
+    Trivia is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with ElementaryPython.  If not, see <http://www.gnu.org/licenses/>.
+    along with Trivia.  If not, see <http://www.gnu.org/licenses/>.
 '''
 import gi
 import os

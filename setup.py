@@ -27,6 +27,7 @@ install_data = [
     ('bin/trivia', ['src/constants.py']),
     ('bin/trivia', ['src/main.py']),
     ('bin/trivia', ['src/dialogs/about_dialog.py']),
+    ('bin/trivia', ['src/dialogs/statistics_dialog.py']),
     ('bin/trivia', ['src/ui/style.css']),
     ('bin/trivia', ['src/views/custom_game.py']),
     ('bin/trivia', ['src/views/end_game.py']),
