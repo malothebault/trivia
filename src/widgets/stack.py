@@ -115,4 +115,4 @@ class Stack(Gtk.Box):
     
     def update_statistics(self):
         settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
-        settings.set_int("played_games", settings.get_int("played_games") + 1)
+        settings.set_int("played-games", settings.get_int("played-games") + 1)

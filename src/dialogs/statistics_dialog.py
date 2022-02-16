@@ -7,7 +7,7 @@ class StatisticsDialog(Gtk.MessageDialog):
         Gtk.MessageDialog.__init__(self)
         
         settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
-        played_games = settings.get_int("played_games")
+        played_games = settings.get_int("played-games")
         
         self.set_property("message-type", Gtk.MessageType.OTHER)
         self.set_transient_for(parent)

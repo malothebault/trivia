@@ -6,6 +6,7 @@ import os
 import locale
 import gettext
 import webbrowser
+import statistics_dialog
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
@@ -112,6 +113,8 @@ class EndGame(Gtk.Box):
     def on_statistics(self, widget):
         print("Games palyed")
         print("Average score")
+        stats = statistics_dialog.StatisticsDialog(self.parent.parent)
+        stats.destroy()
         
     def on_view_answers(self, widget):
         print("View Answers")
