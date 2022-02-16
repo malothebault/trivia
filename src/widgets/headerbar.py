@@ -24,11 +24,11 @@ import os
 import locale
 import gettext
 import constants as cn
+import about_dialog
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk
 
-import constants as cn
 
 ########### TRANSLATION ##############
 try:
@@ -98,3 +98,5 @@ class Headerbar(Gtk.HeaderBar):
     
     def on_information(self, widget):
         print("About Trivia")
+        about = about_dialog.AboutDialog(self.parent)
+        about.present()
