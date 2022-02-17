@@ -30,7 +30,6 @@ import about_dialog, statistics_dialog
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Granite, GdkPixbuf
 
-
 ########### TRANSLATION ##############
 try:
     current_locale, encoding = locale.getdefaultlocale()
@@ -64,7 +63,10 @@ class Headerbar(Gtk.HeaderBar):
         self.props.title = cn.App.application_name
 
         '''BACK BUTTON'''
-        self.back_button = Gtk.Button.new_with_label(_("Menu"))
+        self.back_button_label = Gtk.Label(label = _("Menu"))
+        self.back_button = Gtk.Button()
+        self.back_button.add(self.back_button_label)
+        # self.back_button = Gtk.Button.new_with_label(_("Menu"))
         self.back_button.get_style_context().add_class('back-button')
         self.back_button.connect(
             "clicked", 
@@ -92,7 +94,14 @@ class Headerbar(Gtk.HeaderBar):
 
     '''ACTIONS'''
     def on_back_button_clicked(self, widget):
-        self.parent.stack.play_again()
+        back_view = self.back_button_label.get_text()
+        if back_view == _("Score"):
+            print("hry")
+            self.back_button_label.set_label(_("Menu"))
+            self.parent.stack.answers_view.remove_widgets()
+            self.parent.stack.stack.set_visible_child_name("end_game")
+        else:
+            self.parent.stack.play_again()
     
     def on_best_score(self, widget):
         stats = statistics_dialog.StatisticsDialog(self.parent)

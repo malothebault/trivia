@@ -47,6 +47,7 @@ class Question(Gtk.Box):
         self.parent = parent
         self._ = _
         self.set_border_width(30)
+        self.player_answer = ''
         
         self.id = _id
         self.category = unescape(content.get('category'))
@@ -100,6 +101,7 @@ class Question(Gtk.Box):
         self.set_center_widget(vbox)
 
     def next_question(self, widget, _id):
-        if widget.get_child().get_label() == self.correct_answer:
+        self.player_answer = widget.get_child().get_label()
+        if self.player_answer == self.correct_answer:
             self.parent.score += 1
         self.parent.next_question(_id)

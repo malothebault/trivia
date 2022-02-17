@@ -5,6 +5,8 @@ import gi
 import webbrowser
 import requests
 import json
+import locale
+import gettext
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
@@ -17,6 +19,26 @@ import question
 import end_game
 import custom_game
 import connection_dialog
+import answers
+
+########### TRANSLATION ##############
+try:
+    current_locale, encoding = locale.getdefaultlocale()
+    locale_path = os.path.join(
+        os.path.abspath(
+            os.path.dirname(__file__)
+        ),
+        'locale'
+    )
+    translate = gettext.translation(
+        cn.App.application_shortname,
+        locale_path,
+        [current_locale]
+    )
+    _ = translate.gettext
+except FileNotFoundError:
+    _ = str
+######################################
 
 class Stack(Gtk.Box):
         
@@ -26,6 +48,7 @@ class Stack(Gtk.Box):
     def __init__(self, parent):
         Gtk.Box.__init__(self, orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.parent = parent
+        self._ = _
         self.amount_of_questions = 0
         self.score = 0
 
@@ -38,11 +61,13 @@ class Stack(Gtk.Box):
         self.question_views = {}
         self.end_game = end_game.EndGame(self)
         self.custom_game = custom_game.CustomGame(self)
+        self.answers_view = answers.Answers(self)
 
         self.stack.add_titled(self.welcome, "welcome", "Welcome")
         self.stack.add_titled(self.page_one, "page_one", "Page One")
         self.stack.add_titled(self.end_game, "end_game", "End Game")
         self.stack.add_titled(self.custom_game, "custom_game", "Custom Game")
+        self.stack.add_titled(self.answers_view, "answers_view", "Answers View")
 
         self.pack_start(self.stack, True, True, 0)
     
@@ -124,3 +149,8 @@ class Stack(Gtk.Box):
         average_score = ((average_score * played_games) + new_score)/(played_games + 1)
         settings.set_int("played-games", played_games + 1)
         settings.set_double("average-score", average_score)
+        
+    def view_answers(self):
+        self.parent.hbar.back_button_label.set_label(_("Score"))
+        self.answers_view.display_answers()
+        self.stack.set_visible_child_name("answers_view")

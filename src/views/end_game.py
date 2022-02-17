@@ -115,4 +115,4 @@ class EndGame(Gtk.Box):
         stats.destroy()
         
     def on_view_answers(self, widget):
-        print("View Answers")
+        self.parent.view_answers()
