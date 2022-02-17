@@ -56,7 +56,6 @@ class Answers(Gtk.Box):
         
     def display_answers(self):
         for i in range(self.parent.amount_of_questions):
-            print(self.parent.question_views.get(f"question_{i}"))
             self.new_row(i)
         self.listbox.show_all()
         self.scroll_w.add(self.listbox)
@@ -66,7 +65,6 @@ class Answers(Gtk.Box):
         self.box_list.append(Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=100))
         self.box_list[i].set_border_width(10)
         entry = Gtk.Label(label = self.parent.question_views.get(f"question_{i}").player_answer)
-        print(entry.get_label())
         color = Gtk.ColorButton.new_with_rgba(Gdk.RGBA(255, 255, 255, 255))
         self.box_list[i].pack_start(entry, True, True, 0)
         self.box_list[i].pack_end(color, False, False, 0)
