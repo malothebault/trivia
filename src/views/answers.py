@@ -52,7 +52,7 @@ class Answers(Gtk.Box):
         self.row_list = []
         self.box_list = []
         
-        self.add(self.scroll_w)
+        self.pack_start(self.scroll_w, True, True, 0)
         
     def display_answers(self):
         for i in range(self.parent.amount_of_questions):
@@ -64,10 +64,16 @@ class Answers(Gtk.Box):
         self.row_list.append(Gtk.ListBoxRow())
         self.box_list.append(Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=100))
         self.box_list[i].set_border_width(10)
-        entry = Gtk.Label(label = self.parent.question_views.get(f"question_{i}").player_answer)
-        color = Gtk.ColorButton.new_with_rgba(Gdk.RGBA(255, 255, 255, 255))
-        self.box_list[i].pack_start(entry, True, True, 0)
-        self.box_list[i].pack_end(color, False, False, 0)
+        question = Gtk.Label(label = self.parent.question_views.get(f"question_{i}").question)
+        correct_answer = Gtk.Label(label = self.parent.question_views.get(f"question_{i}").correct_answer)
+        player_answer = Gtk.Label(label = self.parent.question_views.get(f"question_{i}").player_answer)
+        answer_icon = Gtk.ToolButton()
+        icon_name = ('process-completed' if correct_answer.get_text() == player_answer.get_text() else 'process-stop')
+        answer_icon.set_icon_name(icon_name)
+        self.box_list[i].pack_start(answer_icon, False, False, 0)
+        self.box_list[i].pack_start(question, False, False, 0)
+        self.box_list[i].pack_start(correct_answer, True, True, 0)
+        self.box_list[i].pack_start(player_answer, True, True, 0)
         self.row_list[i].add(self.box_list[i])
         self.listbox.add(self.row_list[i])
     

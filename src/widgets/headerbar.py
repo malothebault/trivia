@@ -81,16 +81,18 @@ class Headerbar(Gtk.HeaderBar):
             "clicked",
             self.on_information
         )
+        self.information.set_tooltip_text(_("About Trivia"))
         self.pack_end(self.information)
         
-        '''BEST SCORE BUTTON'''
-        self.best_score = Gtk.ToolButton()
-        self.best_score.set_icon_name("starred") 
-        self.best_score.connect(
+        '''VIEW STATISTICS BUTTON'''
+        self.view_statistics = Gtk.ToolButton()
+        self.view_statistics.set_icon_name("starred") 
+        self.view_statistics.connect(
             "clicked",
-            self.on_best_score
+            self.on_view_statistics
         )
-        self.pack_end(self.best_score)
+        self.view_statistics.set_tooltip_text(_("View statistics"))
+        self.pack_end(self.view_statistics)
 
     '''ACTIONS'''
     def on_back_button_clicked(self, widget):
@@ -103,7 +105,7 @@ class Headerbar(Gtk.HeaderBar):
         else:
             self.parent.stack.play_again()
     
-    def on_best_score(self, widget):
+    def on_view_statistics(self, widget):
         stats = statistics_dialog.StatisticsDialog(self.parent)
         stats.destroy()
     
