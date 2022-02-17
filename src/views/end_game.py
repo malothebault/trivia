@@ -111,8 +111,6 @@ class EndGame(Gtk.Box):
         self.parent.play_again()
     
     def on_statistics(self, widget):
-        print("Games palyed")
-        print("Average score")
         stats = statistics_dialog.StatisticsDialog(self.parent.parent)
         stats.destroy()
         

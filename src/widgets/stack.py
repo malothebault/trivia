@@ -16,6 +16,7 @@ import page_one
 import question
 import end_game
 import custom_game
+import connection_dialog
 
 class Stack(Gtk.Box):
         
@@ -57,7 +58,6 @@ class Stack(Gtk.Box):
         if _type:
             api += f"&type={_type}"
         try:
-            print(base_url+api)
             ############# API Query #######################
             first_response = requests.get(base_url+api)
             response_list=first_response.json().get('results')
@@ -72,7 +72,9 @@ class Stack(Gtk.Box):
             # response_list = data.get('results')
 
         except requests.exceptions.ConnectionError as e:
-            print("Check your internet connection")
+            warn = connection_dialog.ConnectionDialog(self.parent)
+            warn.destroy()
+            return False
         
         for i in range(amount):
             self.question_views[f"question_{i}"] = question.Question(self, i, response_list[i])
