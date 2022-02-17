@@ -57,6 +57,7 @@ class Stack(Gtk.Box):
         if _type:
             api += f"&type={_type}"
         try:
+            print(base_url+api)
             ############# API Query #######################
             first_response = requests.get(base_url+api)
             response_list=first_response.json().get('results')
@@ -115,4 +116,9 @@ class Stack(Gtk.Box):
     
     def update_statistics(self):
         settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
-        settings.set_int("played-games", settings.get_int("played-games") + 1)
+        played_games = settings.get_int("played-games")
+        average_score = settings.get_double("average-score")
+        new_score = self.score/self.amount_of_questions
+        average_score = ((average_score * played_games) + new_score)/(played_games + 1)
+        settings.set_int("played-games", played_games + 1)
+        settings.set_double("average-score", average_score)

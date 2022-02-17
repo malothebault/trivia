@@ -8,11 +8,11 @@ class StatisticsDialog(Gtk.MessageDialog):
         
         settings = Gio.Settings(schema_id="com.github.malothebault.trivia")
         played_games = settings.get_int("played-games")
+        average_score = settings.get_double("average-score")
         
         self.set_property("message-type", Gtk.MessageType.OTHER)
         self.set_transient_for(parent)
         self.set_title("Statistics")
         self.set_markup("<span size='12000'><b>Game Statistics 📊</b></span>")
-        self.format_secondary_text(f"Total of games played: {played_games}")
-        self.format_secondary_text(f"Total of games played: {played_games}")
+        self.format_secondary_text(f"🎮️ Total of games played: {played_games}\n\n💯 Average score: {average_score:.2f}")
         self.run()

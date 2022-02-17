@@ -184,7 +184,7 @@ class CustomGame(Gtk.Box):
         
         category = self.category_list.index(self.category_combo.get_active_text())
         if category != 0:
-            category += 9
+            category += 8
         
         if self.difficulty_combo.get_active_text() == self.difficulty_list[1]:
             difficulty = 'easy'

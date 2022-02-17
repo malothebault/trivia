@@ -31,7 +31,7 @@
 			<description>The number of games that has been played</description>
 		</key>
 
-		<key name="average-score" type="i">
+		<key name="average-score" type="d">
 			<default>0</default>
 			<summary>Average Score</summary>
 			<description>The average score of the player</description>
