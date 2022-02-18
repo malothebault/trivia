@@ -17,7 +17,7 @@ A fun quiz game, designed for elementary os.
 ## 🙏 Credits
 This app is based on the [ElementaryPython](https://github.com/mirkobrombin/ElementaryPython) template.
 
-The questions database come from [Open Trivia DB](https://opentdb.com/). If you want to add more questions, don't hesitate to check the website.
+The database of questions come from [Open Trivia DB](https://opentdb.com/). If you want to add more questions, don't hesitate to check the website.
 
 ## 🔧 Requirements
 - python3
