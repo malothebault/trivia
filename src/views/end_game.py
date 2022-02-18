@@ -45,13 +45,6 @@ class EndGame(Gtk.Box):
         self.set_border_width(60)
         self.set_orientation(Gtk.Orientation.VERTICAL)
         
-        # width = 64
-        # height = 64
-        
-        # pixbuf = GdkPixbuf.Pixbuf.new_from_file('data/party-popper.svg')
-        # pixbuf = pixbuf.scale_simple(width, height, GdkPixbuf.InterpType.BILINEAR)
-        # icon = Gtk.Image.new_from_pixbuf(pixbuf)
-        
         self.label = Gtk.Label(label = _(f"No score 🙁"))
         self.label.set_line_wrap(True)
         self.label.set_justify(Gtk.Justification.CENTER)
