@@ -46,6 +46,7 @@ class Question(Gtk.Box):
         Gtk.Box.__init__(self, False, 0)
         self.parent = parent
         self._ = _
+        self.granite_settings = Granite.Settings()
         self.set_border_width(30)
         self.player_answer = ''
         
@@ -88,7 +89,10 @@ class Question(Gtk.Box):
             answer_label.set_justify(Gtk.Justification.CENTER)
             answer_label.set_name("answer_label")
             button_dict.get(f"answer_{index}").add(answer_label)
-            button_dict.get(f"answer_{index}").set_name(f"button{index}")
+            if self.granite_settings.get_prefers_color_scheme() == Granite.SettingsColorScheme.DARK:
+                button_dict.get(f"answer_{index}").set_name(f"button{index}_dark")
+            else:
+                button_dict.get(f"answer_{index}").set_name(f"button{index}")
             button_dict.get(f"answer_{index}").connect("clicked", self.next_question, self.id)
             button_dict.get(f"answer_{index}").set_can_focus(False)
             grid.attach(button_dict.get(f"answer_{index}"),

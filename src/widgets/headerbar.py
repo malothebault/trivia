@@ -98,7 +98,6 @@ class Headerbar(Gtk.HeaderBar):
     def on_back_button_clicked(self, widget):
         back_view = self.back_button_label.get_text()
         if back_view == _("Score"):
-            print("hry")
             self.back_button_label.set_label(_("Menu"))
             self.parent.stack.answers_view.remove_widgets()
             self.parent.stack.stack.set_visible_child_name("end_game")

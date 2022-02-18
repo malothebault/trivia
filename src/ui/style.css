@@ -23,3 +23,47 @@
 #button3 {
     background-color: #fff394;
 }
+
+#button0_dark {
+    background-color: #7a0000;
+}
+
+#button1_dark {
+    background-color: #206b00;
+}
+
+#button2_dark {
+    background-color: #002e99;
+}
+
+#button3_dark {
+    background-color: #ad5f00;
+}
+
+#correct_answer {
+    background-color: #d1ff82;
+    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#player_answer {
+    background-color: #fafafa;
+    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#correct_answer_dark {
+    background-color: #206b00;
+    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+#player_answer_dark {
+    background-color: #555761;
+    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
