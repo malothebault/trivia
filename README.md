@@ -1,9 +1,12 @@
-# Template
+# Trivia
 
-An app template for elemenary os in python. 
-This is highly inspired by [ElementaryPython](https://github.com/mirkobrombin/ElementaryPython).
+A fun quiz game, designed for elementary os. 
 
-![Screenshot](https://github.com/malothebault/Template/blob/main/data/assets/screenshot.png)
+![Screenshot](https://github.com/malothebault/Trivia/blob/main/data/assets/screenshot.png)
+
+## 🙏 Credits
+This app is based on the [ElementaryPython](https://github.com/mirkobrombin/ElementaryPython) template.
+The questions database come from [Open Trivia DB](https://opentdb.com/). If you want to add more questions, don't hesitate to check the website.
 
 ## 🔧 Requirements
 - python3
@@ -11,19 +14,16 @@ This is highly inspired by [ElementaryPython](https://github.com/mirkobrombin/El
 - libgranite-dev 
 
 ## 🔧 Installation
-On the top right corner of this page, click on the 'Use this template' green button, then:
 ```bash
-git clone https://github.com/<your_username>/<repo_name>.git
-cd <repo_name>
+git clone https://github.com/malothebault/Trivia.git
+cd path/to/trivia
 sudo python3 setup.py install
 ```
 
 ## 🔧 How to run
 ```bash
-com.github.<your_username>.template
+com.github.malothebault.trivia
 ```
 
-## 🔧 If the schema is not found
-```bash
-sudo /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-```
+## Disclaimer
+This is my first GTK app and I am not a professional dev by any kin. If there is something wrong with the code or the app, please let me know opening an issue or a pull request. Thank you!
