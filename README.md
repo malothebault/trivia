@@ -3,15 +3,15 @@
 A fun quiz game, designed for elementary os. 
 
 <div align="center">
-   <a href="https://github.com/malothebault/Trivia/blob/main/LICENSE">
+   <a href="https://github.com/malothebault/trivia/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg">
    </a>
 </div>
 
 <div align="center">
-    <img  src="https://github.com/malothebault/Trivia/blob/main/data/assets/screenshot_menu.png" alt="Menu" width="400">
-    <img  src="https://github.com/malothebault/Trivia/blob/main/data/assets/screenshot_custom.png" alt="Custom Game" width="400">
-    <img  src="https://github.com/malothebault/Trivia/blob/main/data/assets/screenshot_question.png" alt="Question" width="400">
+    <img  src="https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_menu.png" alt="Menu" width="400">
+    <img  src="https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_custom.png" alt="Custom Game" width="400">
+    <img  src="https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_question.png" alt="Question" width="400">
 </div>
 
 ## 🙏 Credits
@@ -26,7 +26,7 @@ The database of questions come from [Open Trivia DB](https://opentdb.com/). If y
 
 ## 🔧 Installation
 ```bash
-git clone https://github.com/malothebault/Trivia.git
+git clone https://github.com/malothebault/trivia.git
 cd path/to/trivia
 sudo python3 setup.py install
 ```

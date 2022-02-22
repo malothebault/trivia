@@ -53,10 +53,10 @@ class App:
     application_description = _('A fun quiz game')
     application_version ="0.1"
     app_years = "2022"
-    main_url = "https://github.com/malothebault/Trivia"
-    bug_url = "https://github.com/malothebault/Trivia/issues/labels/bug"
-    help_url = "https://github.com/malothebault/Trivia/issues"
-    translate_url = "https://github.com/malothebault/Trivia/issues/labels/translation"
+    main_url = "https://github.com/malothebault/trivia"
+    bug_url = "https://github.com/malothebault/trivia/issues/labels/bug"
+    help_url = "https://github.com/malothebault/trivia/issues"
+    translate_url = "https://github.com/malothebault/trivia/issues/labels/translation"
     about_comments = application_description
     about_license_type = Gtk.License.GPL_3_0
     about_icon = "share/icons/hicolor/64x64/apps/com.github.malothebault.trivia.svg"

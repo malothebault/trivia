@@ -48,7 +48,7 @@ setup(
     version='0.1',
     author='Malo Thebault',
     description='A fun quiz game',
-    url='https://github.com/malothebault/Trivia',
+    url='https://github.com/malothebault/trivia',
     license='GNU GPL3',
     scripts=['com.github.malothebault.trivia'],
     packages=['src'],
