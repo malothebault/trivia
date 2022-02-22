@@ -7,7 +7,6 @@ sdk: io.elementary.Sdk
 command: com.github.malothebault.trivia
 
 finish-args:
-finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
@@ -26,9 +25,7 @@ modules:
       - "pip3 install --prefix=${FLATPAK_DEST} requests"
 
   - name: trivia
-    buildsystem: simple
-    build-commands:
-     - python3 setup.py install --prefix=/app
+    buildsystem: meson
     sources:
       - type: dir
         path: .

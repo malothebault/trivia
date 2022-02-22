@@ -1,0 +1,5 @@
+data/com.github.malothebault.trivia.desktop.in
+data/com.github.malothebault.trivia.appdata.xml.in
+data/com.github.malothebault.trivia.gschema.xml
+src/main.py
+src/window.py

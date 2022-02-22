@@ -1,0 +1,24 @@
+#!@PYTHON@
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2022 Malo Thebault <malothebault@lilo.org>
+
+import os
+import sys
+import signal
+import gettext
+
+VERSION = '@VERSION@'
+pkgdatadir = '@pkgdatadir@'
+localedir = '@localedir@'
+
+sys.path.insert(1, pkgdatadir)
+signal.signal(signal.SIGINT, signal.SIG_DFL)
+gettext.install('trivia', localedir)
+
+if __name__ == '__main__':
+    import gi
+
+    from clips import main
+    print("Trivia", VERSION)
+    sys.exit(main.main(VERSION))
