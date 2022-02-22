@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import sys
 from distutils.core import setup
 from distutils.command.install import install as _install
@@ -15,15 +16,15 @@ class install(_install):
 
 '''Here we are defining where should be placed each file'''
 install_data = [
-    ('/usr/share/applications', ['data/com.github.malothebault.trivia.desktop']),
-    ('/usr/share/metainfo', ['data/com.github.malothebault.trivia.appdata.xml']),
-    ('/usr/share/icons/hicolor/128x128/apps', ['data/icons/128/com.github.malothebault.trivia.svg']),
-    ('/usr/share/icons/hicolor/64x64/apps', ['data/icons/64/com.github.malothebault.trivia.svg']),
-    ('/usr/share/icons/hicolor/48x48/apps', ['data/icons/48/com.github.malothebault.trivia.svg']),
-    ('/usr/share/icons/hicolor/32x32/apps', ['data/icons/32/com.github.malothebault.trivia.svg']),
-    ('/usr/share/icons/hicolor/24x24/apps', ['data/icons/24/com.github.malothebault.trivia.svg']),
-    ('/usr/share/icons/hicolor/16x16/apps', ['data/icons/16/com.github.malothebault.trivia.svg']),
-    ('/usr/share/glib-2.0/schemas', ["data/com.github.malothebault.trivia.gschema.xml"]),
+    ('share/applications', ['data/com.github.malothebault.trivia.desktop']),
+    ('share/metainfo', ['data/com.github.malothebault.trivia.appdata.xml']),
+    ('share/icons/hicolor/128x128/apps', ['data/icons/128/com.github.malothebault.trivia.svg']),
+    ('share/icons/hicolor/64x64/apps', ['data/icons/64/com.github.malothebault.trivia.svg']),
+    ('share/icons/hicolor/48x48/apps', ['data/icons/48/com.github.malothebault.trivia.svg']),
+    ('share/icons/hicolor/32x32/apps', ['data/icons/32/com.github.malothebault.trivia.svg']),
+    ('share/icons/hicolor/24x24/apps', ['data/icons/24/com.github.malothebault.trivia.svg']),
+    ('share/icons/hicolor/16x16/apps', ['data/icons/16/com.github.malothebault.trivia.svg']),
+    ('share/glib-2.0/schemas', ["data/com.github.malothebault.trivia.gschema.xml"]),
     ('bin/trivia', ['src/constants.py']),
     ('bin/trivia', ['src/main.py']),
     ('bin/trivia', ['src/dialogs/about_dialog.py']),

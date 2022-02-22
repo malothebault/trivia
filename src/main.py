@@ -32,7 +32,7 @@ class Application(Gtk.Application):
         if launch_dir == "/usr/bin":
             modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
         else:
-            modules_path = launch_dir + "/trivia"
+            modules_path = "/app/bin/trivia"
         
         screen = Gdk.Screen.get_default()
         provider = Gtk.CssProvider()

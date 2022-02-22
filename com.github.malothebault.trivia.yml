@@ -1,0 +1,21 @@
+app-id: com.github.malothebault.trivia
+
+runtime: io.elementary.Platform
+runtime-version: '6.1'
+sdk: io.elementary.Sdk
+
+command: com.github.malothebault.trivia
+
+finish-args:
+  - '--share=ipc'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+
+modules:
+  - name: trivia
+    buildsystem: simple
+    build-commands:
+     - python3 setup.py install --prefix=/app
+    sources:
+      - type: dir
+        path: .
