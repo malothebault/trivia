@@ -2,7 +2,6 @@
 
 import os
 import gi
-import webbrowser
 import requests
 import json
 import locale
@@ -10,11 +9,10 @@ import gettext
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('Granite', '1.0')
-from gi.repository import Gtk, Gdk, Granite, Gio
+from gi.repository import Gtk, Gio
 
 import constants as cn
 import welcome as wl
-import page_one
 import question
 import end_game
 import custom_game
@@ -57,14 +55,12 @@ class Stack(Gtk.Box):
         self.stack.set_transition_duration(250)
         
         self.welcome = wl.Welcome(self)
-        self.page_one = page_one.PageOneClass(self)
         self.question_views = {}
         self.end_game = end_game.EndGame(self)
         self.custom_game = custom_game.CustomGame(self)
         self.answers_view = answers.Answers(self)
 
         self.stack.add_titled(self.welcome, "welcome", "Welcome")
-        self.stack.add_titled(self.page_one, "page_one", "Page One")
         self.stack.add_titled(self.end_game, "end_game", "End Game")
         self.stack.add_titled(self.custom_game, "custom_game", "Custom Game")
         self.stack.add_titled(self.answers_view, "answers_view", "Answers View")

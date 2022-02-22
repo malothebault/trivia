@@ -59,7 +59,7 @@ class App:
     translate_url = "https://github.com/malothebault/trivia/issues/labels/translation"
     about_comments = application_description
     about_license_type = Gtk.License.GPL_3_0
-    about_icon = "share/icons/hicolor/64x64/apps/com.github.malothebault.trivia.svg"
+    about_icon = "com.github.malothebault.trivia.svg"
 
 class Colors:
     primary_color = "#E3D59E"

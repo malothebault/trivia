@@ -7,11 +7,24 @@ sdk: io.elementary.Sdk
 command: com.github.malothebault.trivia
 
 finish-args:
-  - '--share=ipc'
-  - '--socket=fallback-x11'
-  - '--socket=wayland'
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --share=network
+  - --device=dri
+  # needed for perfers-color-scheme
+  - --system-talk-name=org.freedesktop.Accounts
 
 modules:
+  - name: requests
+    buildsystem: simple
+    build-options:
+      build-args:
+        - --share=network
+    build-commands:
+      - "pip3 install --prefix=${FLATPAK_DEST} requests"
+
   - name: trivia
     buildsystem: simple
     build-commands:
