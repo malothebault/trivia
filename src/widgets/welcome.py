@@ -72,7 +72,7 @@ class Welcome(Gtk.Box):
         )
         welcome.append(
             "applications-development",
-            _('Customized'),
+            _('Custom Game'),
             _('Choose number of questions, category etc.')
         )
 
