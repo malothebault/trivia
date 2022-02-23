@@ -35,10 +35,8 @@ class Window(Gtk.Window):
             title=cn.App.application_name
         )
         
-        self.main_file = {"name": "", "path": ""}
-        
         context = self.get_style_context()
-        context.add_class ("rounded")
+        context.add_class("rounded")
 
         self.hbar = hb.Headerbar(self)
         self.set_titlebar(self.hbar)
