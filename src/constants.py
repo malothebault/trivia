@@ -19,6 +19,7 @@
 '''
 import gi
 import os
+import sys
 import locale
 import gettext
 
@@ -45,6 +46,13 @@ except FileNotFoundError:
     _ = str
 
 class App:
+    
+    launch_dir = os.path.dirname(os.path.abspath(sys.argv[0])) 
+    if launch_dir == "/usr/bin":
+        modules_path = "/usr/share/com.github.malothebault.trivia/trivia"
+    else:
+        modules_path = "/app/bin/trivia"
+    
     '''Here we are defining our Application infos, so we can easily
     use in all our application files'''
     application_shortname = "trivia"
@@ -59,7 +67,7 @@ class App:
     translate_url = "https://github.com/malothebault/trivia/issues/labels/translation"
     about_comments = application_description
     about_license_type = Gtk.License.GPL_3_0
-    about_icon = "com.github.malothebault.trivia.svg"
+    about_icon = modules_path + "/com.github.malothebault.trivia.svg"
 
 class Colors:
     primary_color = "#E3D59E"

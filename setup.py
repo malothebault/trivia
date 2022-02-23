@@ -25,6 +25,7 @@ install_data = [
     ('share/icons/hicolor/24x24/apps', ['data/icons/24/com.github.malothebault.trivia.svg']),
     ('share/icons/hicolor/16x16/apps', ['data/icons/16/com.github.malothebault.trivia.svg']),
     ('share/glib-2.0/schemas', ["data/com.github.malothebault.trivia.gschema.xml"]),
+    ('bin/trivia', ['data/icons/64/com.github.malothebault.trivia.svg']),
     ('bin/trivia', ['src/constants.py']),
     ('bin/trivia', ['src/main.py']),
     ('bin/trivia', ['src/dialogs/about_dialog.py']),
