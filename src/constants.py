@@ -70,6 +70,6 @@ class App:
     about_icon = modules_path + "/com.github.malothebault.trivia.svg"
 
 class Colors:
-    primary_color = "#E3D59E"
-    primary_text_color = "#270F2B"
-    primary_text_shadow_color = "#303030"
+    primary_color = "#FFBA49"
+    primary_text_color = "#EF5B5B"
+    primary_text_shadow_color = "#550527"

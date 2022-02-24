@@ -9,35 +9,35 @@
 }
 
 #button0 {
-    background-color: #ff8c82;
-}
-
-#button1 {
-    background-color: #d1ff82;
-}
-
-#button2 {
     background-color: #8cd5ff;
 }
 
-#button3 {
+#button1 {
     background-color: #fff394;
 }
 
+#button2 {
+    background-color: #ff8c82;
+}
+
+#button3 {
+    background-color: #d1ff82;
+}
+
 #button0_dark {
-    background-color: #7a0000;
-}
-
-#button1_dark {
-    background-color: #206b00;
-}
-
-#button2_dark {
     background-color: #002e99;
 }
 
-#button3_dark {
+#button1_dark {
     background-color: #ad5f00;
+}
+
+#button2_dark {
+    background-color: #7a0000;
+}
+
+#button3_dark {
+    background-color: #206b00;
 }
 
 #correct_answer {

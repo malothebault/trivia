@@ -19,7 +19,7 @@
   <url type="bugtracker">https://github.com/malothebault/trivia/issues/labels/bug</url>
   <url type="help">https://github.com/malothebault/trivia/issues</url>
   <custom>
-     <value key="x-appcenter-color-primary">#E3D59E</value>
-     <value key="x-appcenter-color-primary-text">#270F2B</value>
+     <value key="x-appcenter-color-primary">#FFBA49</value>
+     <value key="x-appcenter-color-primary-text">#550527</value>
   </custom>
 </component>

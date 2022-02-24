@@ -41,8 +41,6 @@ class Question(Gtk.Box):
     settings = Gtk.Settings.get_default()
 
     def __init__(self, parent, _id, content):
-        '''Our class will be a Gtk.Box and will contain our 
-        new Welcome Widget.'''
         Gtk.Box.__init__(self, False, 0)
         self.parent = parent
         self._ = _
@@ -56,8 +54,9 @@ class Question(Gtk.Box):
         self.difficulty = content.get('difficulty')
         self.question = unescape(content.get('question'))
         self.correct_answer = unescape(content.get('correct_answer'))
-        self.incorrect_answers = content.get('incorrect_answers')
-        unescape(s for s in self.incorrect_answers)
+        self.incorrect_answers = []
+        for s in content.get('incorrect_answers'):
+            self.incorrect_answers.append(unescape(s))
         self.possible_answers = self.incorrect_answers
         self.possible_answers.append(self.correct_answer)
         shuffle(self.possible_answers)
