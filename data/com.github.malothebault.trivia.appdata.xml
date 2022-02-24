@@ -6,10 +6,27 @@
   <project_license>GPL-3.0+</project_license>
   <name>Trivia</name>
   <summary>A fun quiz game</summary>
+  <description>
+		<p>
+			Trivia is a fun quiz game.
+		</p>
+		<p>
+			You can play a quick game composed of 10 random questions or customize your experience with several categories, three levels of difficulty, true/false or multiple choice questions, and between 1 and 50 questions in a game.
+		</p>
+		<p>
+			Check your statistics and try to improve over the time!
+		</p>
+	</description>
   <developer_name>Malo Thebault</developer_name>
   <screenshots>
       <screenshot type="default">
-          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot.png</image>
+          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_question.png</image>
+      </screenshot>
+      <screenshot type="default">
+          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_menu.png</image>
+      </screenshot>
+      <screenshot type="default">
+          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_custom.png</image>
       </screenshot>
   </screenshots>
   <description>
@@ -18,8 +35,10 @@
   <url type="homepage">https://github.com/malothebault/trivia</url>
   <url type="bugtracker">https://github.com/malothebault/trivia/issues/labels/bug</url>
   <url type="help">https://github.com/malothebault/trivia/issues</url>
+  <update_contact>malothebault@lilo.org</update_contact>
   <custom>
      <value key="x-appcenter-color-primary">#FFBA49</value>
      <value key="x-appcenter-color-primary-text">#550527</value>
+     <value key="x-appcenter-suggested-price">1</value>
   </custom>
 </component>
