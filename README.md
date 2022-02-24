@@ -1,6 +1,10 @@
 # Trivia
 
-A fun quiz game, designed for elementary os. 
+<p align="center">
+  <img width="150" src="https://github.com/malothebault/trivia/blob/main/data/assets/logo.png">
+</p>
+
+Trivia is a fun quiz game, designed for elementary os. 
 
 <div align="center">
    <a href="https://github.com/malothebault/trivia/blob/main/LICENSE">
