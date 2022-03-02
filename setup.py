@@ -46,7 +46,7 @@ install_data = [
 '''Let's go and infuse our application into the system.'''
 setup(
     name='Trivia',
-    version='0.1',
+    version='v0.1.0',
     author='Malo Thebault',
     description='A fun quiz game',
     url='https://github.com/malothebault/trivia',

@@ -59,7 +59,7 @@ class App:
     application_id = "com.github.malothebault.trivia"
     application_name = "Trivia"
     application_description = _('A fun quiz game')
-    application_version ="0.1"
+    application_version ="v0.1.0"
     app_years = "2022"
     main_url = "https://github.com/malothebault/trivia"
     bug_url = "https://github.com/malothebault/trivia/issues/labels/bug"
