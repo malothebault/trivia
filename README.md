@@ -40,4 +40,4 @@ com.github.malothebault.trivia
 ```
 
 ## 🚧 Disclaimer
-This is my first GTK app and I am not a professional dev by any kin. If there is something wrong with the code or the app, please let me know opening an issue or a pull request. Thank you!
+This is my first GTK app and I am not a professional dev by any kind. If there is something wrong with the code or the app, please let me know opening an issue or a pull request. Thank you!
