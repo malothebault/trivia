@@ -7,14 +7,11 @@ sdk: io.elementary.Sdk
 command: com.github.malothebault.trivia
 
 finish-args:
-finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
   - --share=network
   - --device=dri
-  # needed for perfers-color-scheme
-  - --system-talk-name=org.freedesktop.Accounts
 
 modules:
   - name: requests

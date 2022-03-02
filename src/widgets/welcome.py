@@ -67,7 +67,7 @@ class Welcome(Gtk.Box):
         )
         welcome.append(
             "input-gaming", # the action icon (a valid icon name)
-            _('Quick game'), # the action name
+            _('Quick Game'), # the action name
             _('Ten random questions on random subjects') # the action description
         )
         welcome.append(

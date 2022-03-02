@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2017 Allen B -->
+<!-- Copyright (c) 2022 Malo Thebault (https://github.com/malothebault/trivia)-->
 <component type="desktop">
-  <id>com.github.malothebault.trivia</id>
-  <metadata_license>CC0</metadata_license>
-  <project_license>GPL-3.0+</project_license>
-  <name>Trivia</name>
-  <summary>A fun quiz game</summary>
-  <description>
+	<id>com.github.malothebault.trivia</id>
+	<metadata_license>CC0</metadata_license>
+	<project_license>GPL-3.0+</project_license>
+	<launchable type="desktop-id">com.github.malothebault.trivia.desktop</launchable>
+	<categories>
+        <category>Game</category>
+    </categories>
+	<developer_name>Malo Thebault</developer_name>
+	
+	<name>Trivia</name>
+	<summary>A fun quiz game</summary>
+	<description>
 		<p>
 			Trivia is a fun quiz game.
 		</p>
@@ -17,57 +23,46 @@
 			Check your statistics and try to improve over the time!
 		</p>
 	</description>
-  <developer_name>Malo Thebault</developer_name>
-  <screenshots>
-      <screenshot type="default">
-          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_question.png</image>
-      </screenshot>
-      <screenshot type="default">
-          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_menu.png</image>
-      </screenshot>
-      <screenshot type="default">
-          <image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_custom.png</image>
-      </screenshot>
-  </screenshots>
-  <description>
-    <p>An app trivia for elemenary os</p>
-  </description>
-  <url type="homepage">https://github.com/malothebault/trivia</url>
-  <url type="bugtracker">https://github.com/malothebault/trivia/issues/labels/bug</url>
-  <url type="help">https://github.com/malothebault/trivia/issues</url>
-  <update_contact>malothebault@lilo.org</update_contact>
-  <content_rating type="oars-1.1">
-		<content_attribute id="violence-cartoon">none</content_attribute>
-		<content_attribute id="violence-fantasy">none</content_attribute>
-		<content_attribute id="violence-realistic">none</content_attribute>
-		<content_attribute id="violence-bloodshed">none</content_attribute>
-		<content_attribute id="violence-sexual">none</content_attribute>
-		<content_attribute id="violence-desecration">none</content_attribute>
-		<content_attribute id="violence-slavery">none</content_attribute>
-		<content_attribute id="violence-worship">none</content_attribute>
-		<content_attribute id="drugs-alcohol">none</content_attribute>
-		<content_attribute id="drugs-narcotics">none</content_attribute>
-		<content_attribute id="drugs-tobacco">none</content_attribute>
-		<content_attribute id="sex-nudity">none</content_attribute>
-		<content_attribute id="sex-themes">none</content_attribute>
-		<content_attribute id="sex-homosexuality">none</content_attribute>
-		<content_attribute id="sex-prostitution">none</content_attribute>
-		<content_attribute id="sex-adultery">none</content_attribute>
-		<content_attribute id="sex-appearance">none</content_attribute>
-		<content_attribute id="language-profanity">none</content_attribute>
-		<content_attribute id="language-humor">none</content_attribute>
-		<content_attribute id="language-discrimination">none</content_attribute>
-		<content_attribute id="social-chat">none</content_attribute>
-		<content_attribute id="social-info">none</content_attribute>
-		<content_attribute id="social-audio">none</content_attribute>
-		<content_attribute id="social-location">none</content_attribute>
-		<content_attribute id="social-contacts">none</content_attribute>
-		<content_attribute id="money-purchasing">none</content_attribute>
-		<content_attribute id="money-gambling">none</content_attribute>
+	<screenshots>
+		<screenshot type="default">
+			<image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_question.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_menu.png</image>
+		</screenshot>
+		<screenshot>
+			<image>https://github.com/malothebault/trivia/blob/main/data/assets/screenshot_custom.png</image>
+		</screenshot>
+	</screenshots>
+	<url type="homepage">https://github.com/malothebault/trivia</url>
+	<url type="bugtracker">https://github.com/malothebault/trivia/labels/bug</url>
+	<url type="help">https://github.com/malothebault/trivia/issues</url>
+	<update_contact>malothebault@lilo.org</update_contact>
+	
+	<content_rating type="oars-1.1">
+		<content_attribute id="social-info">mild</content_attribute>
 	</content_rating>
-  <custom>
-     <value key="x-appcenter-color-primary">#FFBA49</value>
-     <value key="x-appcenter-color-primary-text">#550527</value>
-     <value key="x-appcenter-suggested-price">1</value>
-  </custom>
+
+	<custom>
+		<value key="x-appcenter-color-primary">#FFBA49</value>
+		<value key="x-appcenter-color-primary-text">#550527</value>
+		<value key="x-appcenter-suggested-price">1</value>
+	</custom>
+
+	<releases>
+		<release version="0.1" date="2022-03-02">
+			<description>
+				<p>New Features:</p>
+				<ul>
+					<li>Translation Support</li>
+				</ul>
+				<p>Improvements:</p>
+				<ul>
+					<li>Spanish Translation</li>
+					<li>App no longer freezes while loading a heavy file or performing a comparison/verification.</li>
+					<li>Code cleaning</li>
+				</ul>
+			</description>
+		</release>
+	</releases>
 </component>
