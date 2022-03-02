@@ -9,7 +9,7 @@
         <category>Game</category>
     </categories>
 	<developer_name>Malo Thebault</developer_name>
-	
+
 	<name>Trivia</name>
 	<summary>A fun quiz game</summary>
 	<description>
@@ -17,10 +17,13 @@
 			Trivia is a fun quiz game.
 		</p>
 		<p>
-			You can play a quick game composed of 10 random questions or customize your experience with several categories, three levels of difficulty, true/false or multiple choice questions, and between 1 and 50 questions in a game.
+			You can play a quick game composed of 10 random questions or customize your experience with several categories, three levels of difficulty, true/false or multiple choice questions, and between 1 and 50 questions per game.
 		</p>
 		<p>
 			Check your statistics and try to improve over the time!
+		</p>
+		<p>
+			Based on <a href="https://opentdb.com/">Open Trivia DB
 		</p>
 	</description>
 	<screenshots>
@@ -52,15 +55,10 @@
 	<releases>
 		<release version="0.1" date="2022-03-02">
 			<description>
-				<p>New Features:</p>
+				<p>Initial release:</p>
 				<ul>
-					<li>Translation Support</li>
-				</ul>
-				<p>Improvements:</p>
-				<ul>
-					<li>Spanish Translation</li>
-					<li>App no longer freezes while loading a heavy file or performing a comparison/verification.</li>
-					<li>Code cleaning</li>
+					<li>Basic quiz game</li>
+					<li>Based on <a href="https://opentdb.com/">Open Trivia DB</a></li>
 				</ul>
 			</description>
 		</release>
